@@ -9,6 +9,7 @@ import net.minecraft.text.Text;
 import net.withrage.cozytips.config.CozyTipsConfig;
 import net.withrage.cozytips.config.CozyTipsConfigManager;
 import net.withrage.cozytips.tip.TipManager;
+import net.withrage.cozytips.util.ColorUtils;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -47,12 +48,15 @@ public class GameMenuScreenMixin {
         int titleHeight = 12;
         int totalTipHeight = wrappedTip.size() * lineHeight;
 
+        int titleColor = ColorUtils.parseColor(config.titleColor);
+        int textColor = ColorUtils.parseColor(config.textColor);
+
         int baseY = screenHeight - 45 - totalTipHeight;
 
         String title = config.title;
         int titleX = (screenWidth - textRenderer.getWidth(title)) / 2;
 
-        context.drawText(textRenderer, Text.literal(title), titleX, baseY, config.titleColor, true);
+        context.drawText(textRenderer, Text.literal(title), titleX, baseY, titleColor, true);
 
         int tipStartY = baseY + titleHeight;
 
@@ -62,7 +66,7 @@ public class GameMenuScreenMixin {
             int lineX = (screenWidth - lineWidth) / 2;
             int lineY = tipStartY + (i * lineHeight);
 
-            context.drawText(textRenderer, line, lineX, lineY, config.textColor, true);
+            context.drawText(textRenderer, line, lineX, lineY, textColor, true);
         }
     }
 }

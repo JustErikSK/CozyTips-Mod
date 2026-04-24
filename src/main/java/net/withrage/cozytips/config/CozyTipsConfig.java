@@ -7,8 +7,8 @@ public class CozyTipsConfig {
     public boolean enabled = true;
     public int cycleTimeMs = 5000;
     public String title = "Tip:";
-    public int titleColor = 0xFFE8C547;
-    public int textColor = 0xFFFFFFFF;
+    public String titleColor = "#E8C547";
+    public String textColor = "#FFFFFF";
     public int yOffset = -38;
 
     public List<String> tips = new ArrayList<>(List.of(
