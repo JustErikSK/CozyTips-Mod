@@ -3,30 +3,28 @@
 	"id": "cozytips",
 	"version": "${version}",
 	"name": "Cozy Tips",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "A simple mod that adds custom loading screen tips, configurable using a config file.",
 	"authors": [
-		"Me!"
+		"JustErikSK, With Rage Studios"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://modrinth.com/mod/cozytips",
+		"issues": "https://github.com/JustErikSK/CozyTips-Mod/issues",
+		"sources": "https://github.com/JustErikSK/CozyTips-Mod"
 	},
-	"license": "CC0-1.0",
+	"license": "MIT",
 	"icon": "assets/cozytips/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
 			"net.withrage.cozytips.CozyTips"
-		],
-		"fabric-datagen": [
-			"net.withrage.cozytips.CozyTipsDataGenerator"
 		]
 	},
 	"mixins": [
 		"cozytips.mixins.json"
 	],
 	"depends": {
-		"fabricloader": ">=0.19.2",
+		"fabricloader": ">=0.19.0",
 		"minecraft": "~1.20.1",
 		"java": ">=17",
 		"fabric-api": "*"
