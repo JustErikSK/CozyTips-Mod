@@ -5,7 +5,7 @@ import java.util.List;
 
 public class CozyTipsConfig {
     public boolean enabled = true;
-    public int cycleTimeMs = 9000;
+    public int cycleTimeMs = 5000;
     public String title = "Tip:";
     public int titleColor = 0xFFE8C547;
     public int textColor = 0xFFFFFFFF;
