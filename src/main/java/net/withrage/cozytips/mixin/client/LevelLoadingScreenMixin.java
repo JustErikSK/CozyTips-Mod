@@ -55,7 +55,7 @@ public class LevelLoadingScreenMixin {
         int titleHeight = 12;
         int totalTipHeight = wrappedTip.size() * lineHeight;
 
-        int baseY = screenHeight - 70 - totalTipHeight;
+        int baseY = screenHeight - config.yOffset - totalTipHeight;
 
         Component title = Component.literal(config.title);
         int titleX = (screenWidth - font.width(title)) / 2;
