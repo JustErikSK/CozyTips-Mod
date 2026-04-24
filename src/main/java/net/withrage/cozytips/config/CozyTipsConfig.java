@@ -12,10 +12,10 @@ public class CozyTipsConfig {
     public int yOffset = -38;
 
     public List<String> tips = new ArrayList<>(List.of(
-            "Octopuses have three hearts.",
-            "A group of flamingos is called a flamboyance.",
-            "Some frogs can survive being frozen.",
-            "Owls can rotate their heads much farther than humans can.",
-            "Sea otters hold hands while sleeping so they do not drift apart."
+            "Torches can prevent hostile mobs from spawning nearby.",
+            "Sneaking lets you avoid falling off edges.",
+            "Always carry a bucket of water.",
+            "Beds let you skip the night and set your respawn point.",
+            "Cure zombie villagers to get discounts on villager trades."
     ));
 }
