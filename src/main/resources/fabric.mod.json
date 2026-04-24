@@ -1,0 +1,32 @@
+{
+	"schemaVersion": 1,
+	"id": "cozytips",
+	"version": "${version}",
+	"name": "Cozy Tips",
+	"description": "A simple mod that adds custom loading screen tips, configurable using a config file.",
+	"authors": [
+		"JustErikSK, With Rage Studios"
+	],
+	"contact": {
+		"homepage": "https://modrinth.com/mod/cozytips",
+		"issues": "https://github.com/JustErikSK/CozyTips-Mod/issues",
+		"sources": "https://github.com/JustErikSK/CozyTips-Mod"
+	},
+	"license": "MIT",
+	"icon": "assets/cozytips/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.withrage.cozytips.CozyTips"
+		]
+	},
+	"mixins": [
+		"cozytips.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.18.0",
+		"minecraft": "~26.1",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}
