@@ -51,7 +51,7 @@ public class GameMenuScreenMixin {
         int titleColor = ColorUtils.parseColor(config.titleColor);
         int textColor = ColorUtils.parseColor(config.textColor);
 
-        int baseY = screenHeight - 45 - totalTipHeight;
+        int baseY = screenHeight - 45 - totalTipHeight - config.yOffset;
 
         String title = config.title;
         int titleX = (screenWidth - textRenderer.getWidth(title)) / 2;
