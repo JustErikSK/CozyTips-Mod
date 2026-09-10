@@ -9,6 +9,7 @@ public class CozyTipsConfig {
     public String title = "Tip:";
     public String titleColor = "#E8C547";
     public String textColor = "#FFFFFF";
+    public int yOffset = 0;
 
     public List<String> tips = new ArrayList<>(List.of(
             "Torches can prevent hostile mobs from spawning nearby.",
