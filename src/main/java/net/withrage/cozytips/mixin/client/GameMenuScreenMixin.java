@@ -55,7 +55,7 @@ public class GameMenuScreenMixin {
         int titleHeight = 12;
         int totalTipHeight = wrappedTip.size() * lineHeight;
 
-        int baseY = screenHeight - 45 - totalTipHeight;
+        int baseY = screenHeight - 45 - totalTipHeight - config.yOffset;
 
         Component title = Component.literal(config.title);
         int titleX = (screenWidth - font.width(title)) / 2;
