@@ -1,0 +1,12 @@
+{
+	"required": true,
+	"package": "net.withrage.cozytips.client.mixin.client",
+	"compatibilityLevel": "JAVA_25",
+	"client": [
+		"LevelLoadingScreenMixin",
+		"GameMenuScreenMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}
