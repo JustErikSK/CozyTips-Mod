@@ -14,7 +14,7 @@
 	},
 	"license": "MIT",
 	"icon": "assets/cozytips/icon.png",
-	"environment": "*",
+	"environment": "client",
 	"entrypoints": {
 		"main": [
 			"net.withrage.cozytips.CozyTips"
