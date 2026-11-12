@@ -16,6 +16,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.List;
 import net.withrage.cozytips.util.KeybindPlaceholderUtils;
+import net.withrage.cozytips.util.TipPositionUtils;
 
 @Mixin(LevelLoadingScreen.class)
 public class LevelLoadingScreenMixin {
@@ -56,7 +57,12 @@ public class LevelLoadingScreenMixin {
         int titleColor = ColorUtils.parseColor(config.titleColor);
         int textColor = ColorUtils.parseColor(config.textColor);
 
-        int baseY = screenHeight - 70 - totalTipHeight - config.yOffset;
+        int baseY = TipPositionUtils.calculateY(
+                screenHeight,
+                titleHeight,
+                totalTipHeight,
+                config.yOffset
+        );
 
         String title = config.title;
         int titleX = (screenWidth - textRenderer.getWidth(title)) / 2;
