@@ -15,6 +15,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.List;
+import net.withrage.cozytips.util.KeybindPlaceholderUtils;
 
 @Mixin(LevelLoadingScreen.class)
 public class LevelLoadingScreenMixin {
@@ -31,10 +32,13 @@ public class LevelLoadingScreenMixin {
             return;
         }
 
-        String tip = TipManager.getCurrentTip();
-        if (tip == null || tip.isBlank()) {
+        String rawTip = TipManager.getCurrentTip();
+
+        if (rawTip == null || rawTip.isBlank()) {
             return;
         }
+
+        Text tip = KeybindPlaceholderUtils.resolve(rawTip);
 
         TextRenderer textRenderer = client.textRenderer;
 
@@ -43,7 +47,7 @@ public class LevelLoadingScreenMixin {
 
         int maxTextWidth = Math.min(320, screenWidth - 40);
 
-        List<OrderedText> wrappedTip = textRenderer.wrapLines(Text.literal(tip), maxTextWidth);
+        List<OrderedText> wrappedTip = textRenderer.wrapLines(tip, maxTextWidth);
 
         int lineHeight = 10;
         int titleHeight = 12;
