@@ -16,6 +16,9 @@ public class CozyTipsConfig {
             "Sneaking lets you avoid falling off edges.",
             "Always carry a bucket of water.",
             "Beds let you skip the night and set your respawn point.",
-            "Cure zombie villagers to get discounts on villager trades."
+            "Cure zombie villagers to get discounts on villager trades.",
+            "Press {keybind:key.sneak} to sneak.",
+            "Press {keybind:key.jump} to jump.",
+            "Press {keybind:key.inventory} to open your inventory."
     ));
 }

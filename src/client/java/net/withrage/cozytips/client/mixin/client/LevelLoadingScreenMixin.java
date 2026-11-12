@@ -10,6 +10,8 @@ import net.withrage.cozytips.client.config.CozyTipsConfig;
 import net.withrage.cozytips.client.config.CozyTipsConfigManager;
 import net.withrage.cozytips.client.tip.TipManager;
 import net.withrage.cozytips.client.util.ColorUtils;
+import net.withrage.cozytips.client.util.KeybindPlaceholderUtils;
+import net.withrage.cozytips.client.util.TipPositionUtils;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -34,11 +36,13 @@ public class LevelLoadingScreenMixin {
             return;
         }
 
-        String tip = TipManager.getCurrentTip();
+        String rawTip = TipManager.getCurrentTip();
 
-        if (tip == null || tip.isBlank()) {
+        if (rawTip == null || rawTip.isBlank()) {
             return;
         }
+
+        Component tip = KeybindPlaceholderUtils.resolve(rawTip);
 
         Font font = client.font;
 
@@ -46,7 +50,7 @@ public class LevelLoadingScreenMixin {
         int screenHeight = client.getWindow().getGuiScaledHeight();
 
         int maxTextWidth = Math.min(420, screenWidth - 40);
-        List<FormattedCharSequence> wrappedTip = font.split(Component.literal(tip), maxTextWidth);
+        List<FormattedCharSequence> wrappedTip = font.split(tip, maxTextWidth);
 
         int titleColor = ColorUtils.parseColor(config.titleColor);
         int textColor = ColorUtils.parseColor(config.textColor);
@@ -55,7 +59,12 @@ public class LevelLoadingScreenMixin {
         int titleHeight = 12;
         int totalTipHeight = wrappedTip.size() * lineHeight;
 
-        int baseY = screenHeight - 70 - totalTipHeight - config.yOffset;
+        int baseY = TipPositionUtils.calculateY(
+                screenHeight,
+                titleHeight,
+                totalTipHeight,
+                config.yOffset
+        );
 
         Component title = Component.literal(config.title);
         int titleX = (screenWidth - font.width(title)) / 2;
