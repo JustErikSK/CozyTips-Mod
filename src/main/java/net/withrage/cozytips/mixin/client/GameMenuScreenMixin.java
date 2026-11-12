@@ -10,6 +10,8 @@ import net.withrage.cozytips.config.CozyTipsConfig;
 import net.withrage.cozytips.config.CozyTipsConfigManager;
 import net.withrage.cozytips.tip.TipManager;
 import net.withrage.cozytips.util.ColorUtils;
+import net.withrage.cozytips.util.KeybindPlaceholderUtils;
+import net.withrage.cozytips.util.TipPositionUtils;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -32,10 +34,13 @@ public class GameMenuScreenMixin {
             return;
         }
 
-        String tip = TipManager.getCurrentTip();
-        if (tip == null || tip.isBlank()) {
+        String rawTip = TipManager.getCurrentTip();
+
+        if (rawTip == null || rawTip.isBlank()) {
             return;
         }
+
+        Text tip = KeybindPlaceholderUtils.resolve(rawTip);
 
         TextRenderer textRenderer = client.textRenderer;
 
@@ -43,7 +48,7 @@ public class GameMenuScreenMixin {
         int screenHeight = client.getWindow().getScaledHeight();
 
         int maxTextWidth = Math.min(420, screenWidth - 40);
-        List<OrderedText> wrappedTip = textRenderer.wrapLines(Text.literal(tip), maxTextWidth);
+        List<OrderedText> wrappedTip = textRenderer.wrapLines(tip, maxTextWidth);
 
         int lineHeight = 10;
         int titleHeight = 12;
@@ -52,7 +57,12 @@ public class GameMenuScreenMixin {
         int titleColor = ColorUtils.parseColor(config.titleColor);
         int textColor = ColorUtils.parseColor(config.textColor);
 
-        int baseY = screenHeight - 45 - totalTipHeight - config.yOffset;
+        int baseY = TipPositionUtils.calculateY(
+                screenHeight,
+                titleHeight,
+                totalTipHeight,
+                config.yOffset
+        );
 
         String title = config.title;
         int titleX = (screenWidth - textRenderer.getWidth(title)) / 2;
