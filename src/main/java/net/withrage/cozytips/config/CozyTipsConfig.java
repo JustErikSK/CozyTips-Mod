@@ -6,6 +6,8 @@ import java.util.List;
 public class CozyTipsConfig {
     public boolean enabled = true;
     public int cycleTimeMs = 5000;
+    public boolean randomOrder = true;
+    public boolean randomStart = true;
     public String title = "Tip:";
     public String titleColor = "#E8C547";
     public String textColor = "#FFFFFF";
