@@ -10,7 +10,7 @@ public class TipManager {
     private static final Random RANDOM = new Random();
 
     private static List<String> tips = new ArrayList<>();
-    private static String currentTip = "Animals are amazing!";
+    private static String currentTip = "Never Gonna Give You Up";
     private static long nextChangeTime = 0L;
 
     public static void reload() {
@@ -18,7 +18,7 @@ public class TipManager {
         tips = new ArrayList<>(config.tips);
 
         if (tips.isEmpty()) {
-            currentTip = "Animals are amazing!";
+            currentTip = "Never Gonna Give You Up";
         } else {
             currentTip = getRandomTip();
         }
@@ -35,7 +35,7 @@ public class TipManager {
 
         long now = System.currentTimeMillis();
         if (now >= nextChangeTime) {
-            currentTip = tips.isEmpty() ? "Animals are amazing!" : getRandomTip();
+            currentTip = tips.isEmpty() ? "Never Gonna Give You Up" : getRandomTip();
             nextChangeTime = now + config.cycleTimeMs;
         }
 
@@ -44,7 +44,7 @@ public class TipManager {
 
     private static String getRandomTip() {
         if (tips.isEmpty()) {
-            return "Animals are amazing!";
+            return "Never Gonna Give You Up";
         }
 
         return tips.get(RANDOM.nextInt(tips.size()));
